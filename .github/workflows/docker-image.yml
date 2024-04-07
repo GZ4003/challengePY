@@ -1,4 +1,4 @@
-name: Nodeapp Mongodb Docker Image 
+name: Flask app 
 
 on:
   push:
