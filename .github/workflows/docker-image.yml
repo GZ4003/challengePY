@@ -3,10 +3,10 @@ name: Flask app
 on:
   push:
    paths:
-     - '/app/**'
+     - 'app/**'
   pull_request:
     paths:
-      - '/app/**'
+      - 'app/**'
 
 jobs:
   build-and-push:
