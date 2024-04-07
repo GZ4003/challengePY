@@ -37,23 +37,17 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-          env:
-          - name: MENSAJE
-            valueFrom:
-              secretKeyRef:
-                name: {{ include "flaskapp-helm-chart.fullname" . }}-secret
-                key: MENSAJE
           volumeMounts:
-          - name: nodejs-example-volume
-            mountPath: /usr/src/app/db
+          - name: flask-volume
+            mountPath: /usr/src/app/
           livenessProbe:
             httpGet:
               path: /
-              port: http
+              port: 6969
           readinessProbe:
             httpGet:
               path: /
-              port: http
+              port: 6969
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -69,6 +63,6 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       volumes:
-      - name: nodejs-example-volume
+      - name: flask-volume
         persistentVolumeClaim:
           claimName: {{ include "flaskapp-helm-chart.fullname" . }}-pvc
