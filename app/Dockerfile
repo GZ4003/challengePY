@@ -1,4 +1,4 @@
-# Stage 1: Build stage
+# Etapa 1: La contrucción de la imagen
 FROM python:3.9 as builder
 
 WORKDIR /app
@@ -20,15 +20,16 @@ FROM builder
 
 WORKDIR /app
 
-# Copy the installed dependencies from the previous stage
+# Copiando las dependencias instaladas desde la etapa anterior
 COPY --from=builder /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
 
-# Copy the application source code from the previous stage
+# Copiando el codigo funte aplicación desde la etapa previa
 COPY --from=builder /app/* .
 
-# Expose port 5000
+# Exponemos el Puerto 6969
 EXPOSE 6969
 
+# Ejecutamos la aplicación
 CMD ["gunicorn","--bind","0.0.0.0:6969","app:app"]
 
 
