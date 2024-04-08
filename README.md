@@ -6,11 +6,9 @@
 
 git clone <URL_DEL_REPOSITORIO>
 
-Una vez en el directorio creamos los ficheros que usaremos en este caso usaremos como microservicio NGINX por lo tanto creamos un Dockerfile y nginx.conf
-
 ### 2. Exposición de la aplicación como servicio mediante definición de Docker Compose.
 
-#### Construir la imagen Docker y exponerla con Nginx:
+#### Construir la imagen Docker y exponerla:
 
 ```bash
 docker-compose up --build
