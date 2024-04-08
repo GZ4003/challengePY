@@ -1,71 +1,55 @@
 # PYTHON-APP
-1-Clonar el repositorio:
+
+## Para empezar a trabajar con este repositorio de GitHub se deben seguir los siguentes pasos:
+
+### 1. Clonar el repositorio:
 
 git clone <URL_DEL_REPOSITORIO>
-cd <NOMBRE_DEL_DIRECTORIO>
 
-2-Construir la imagen Docker:
+Una vez en el directorio creamos los ficheros que usaremos en este caso usaremos como microservicio NGINX por lo tanto creamos un Dockerfile y nginx.conf
 
-```bash
-docker build -t flaskapp .
-```
+### 2. Exposición de la aplicación como servicio mediante definición de Docker Compose.
 
-3-Ejecutar el contenedor Docker localmente:
+#### Construir la imagen Docker y exponerla con Nginx:
 
 ```bash
-docker run -p 6969:6969 flaskapp
+docker-compose up --build
 ```
-
-4-Ahora vemos si funciona la imagen yendo al puerto que colocamos antes 
-
 *Abre un navegador web y navega a http://localhost:6969. Deberías ver la aplicación funcionando correctamente.*
 
-# AHORA TOCA KUBERNETES
+### Exposición de la aplicación como servicio mediante definición de Kubernetes.
 
-5-Preparar el archivo values.yaml:
-
-*Edita el archivo values.yaml según tus preferencias y configuraciones específicas del clúster de Kubernetes.*
-
-6-Crear namespace de trabajo
+#### Crear espacio de trabajo
 ```bash
-kubectl create namespace flask 6
+kubectl create namespace flask
 ```
-7-Desplegar la aplicación en Kubernetes:
-
+#### Crear secreto con la credenciales de Docker Hub 
+*Esto se hace para que Kubernetes pueda acceder a imagen a pesar que este publica*
 ```bash
-helm install flaskapp-deploy . -n flask -f values.yaml  --debug
+kubectl create secret -n flask docker-registry flask-image \
+    --docker-server=https://index.docker.io/v1/ \
+    --docker-username= \
+    --docker-password=
 ```
-8-Verificar el estado del despliegue:
-
+#### Desplegar la aplicación en Kubernetes:
 ```bash
+helm install flask-deploy . -n flask -f values.yaml  --debug
+```
+ #### Verificar el estado del despliegue
+ Esto mostrará el estado de los pods en tu clúster de Kubernetes. Espera hasta que el pod correspondiente al despliegue esté en estado Running.
+ ```bash
 kubectl get pods --namespace flask
 ```
-
-*Esto mostrará el estado de los pods en tu clúster de Kubernetes. Espera hasta que el pod correspondiente al despliegue esté en estado Running.*
-
-9-Para actualizar
-
-```bash
-helm upgrade flaskapp-deploy . -n flask -f values.yaml  --debug
-```
-10-Secreto para docker
-
-```bash
-kubectl create secret -n flask docker-registry flask \
-    --docker-server=https://index.docker.io/v1/ \
-    --docker-username=prasadhole \
-    --docker-password=Prasad@2002
-```
-11-Acceder a la aplicación en Kubernetes:
-
-```bash
+#### Ver el listado de servicios 
+ ```bash
 kubectl get svc
 ```
-
-*Utiliza la dirección IP y el puerto para acceder a la aplicación en el navegador web.*
-
+#### Para acceder a la aplicación del cluster de Kubernetes (local)
+ ```bash
+minikube service flask-deploy-flaskapp-helm-chart -n flask
+```
+* Se debe seleccionar la segunda IP *
 *Con estos pasos, deberías poder levantar la aplicación tanto localmente utilizando Docker como en un clúster de Kubernetes utilizando Helm. Asegúrate de seguir los pasos con cuidado y realizar las configuraciones necesarias según tus requisitos específicos.*
-
 
 
 
