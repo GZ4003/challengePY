@@ -48,7 +48,10 @@ minikube service flask-deploy-flaskapp-helm-chart -n flask
 ```
 *Se debe seleccionar la segunda IP*
 
-*Con estos pasos, deberías poder levantar la aplicación tanto localmente utilizando Docker como en un clúster de Kubernetes utilizando Helm. Asegúrate de seguir los pasos con cuidado y muchas gracias por leer.*
+*Con estos pasos, deberías poder levantar la aplicación tanto localmente utilizando Docker como en un clúster de Kubernetes utilizando Helm. Asegúrate de seguir los pasos con cuidado.*
+
+Por ultimo este repositorio cuenta con automatizacion de git actions, en el cual cualquier modificacion que se realice dentro de la carpeta app tendra como consencuencia una actualizacion de la imagen de docker y se actualizara la imagen de registry
+
 
 
 
