@@ -1,7 +1,4 @@
 name: Flask app 
-
-name: ci
-
 on:
   push:
     branches:
