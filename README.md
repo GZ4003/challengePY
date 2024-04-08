@@ -6,7 +6,9 @@ cd <NOMBRE_DEL_DIRECTORIO>
 
 2-Construir la imagen Docker:
 
-```bash docker build -t flaskapp .```
+```bash
+docker build -t flaskapp .
+```
 
 3-Ejecutar el contenedor Docker localmente:
 
