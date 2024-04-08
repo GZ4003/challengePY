@@ -46,8 +46,9 @@ kubectl get svc
  ```bash
 minikube service flask-deploy-flaskapp-helm-chart -n flask
 ```
-* Se debe seleccionar la segunda IP *
-*Con estos pasos, deberías poder levantar la aplicación tanto localmente utilizando Docker como en un clúster de Kubernetes utilizando Helm. Asegúrate de seguir los pasos con cuidado y realizar las configuraciones necesarias según tus requisitos específicos.*
+*Se debe seleccionar la segunda IP*
+
+*Con estos pasos, deberías poder levantar la aplicación tanto localmente utilizando Docker como en un clúster de Kubernetes utilizando Helm. Asegúrate de seguir los pasos con cuidado y muchas gracias por leer.*
 
 
 
