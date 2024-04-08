@@ -22,7 +22,7 @@ docker-compose up --build
 kubectl create namespace flask
 ```
 #### Crear secreto con la credenciales de Docker Hub 
-*Esto se hace para que Kubernetes pueda acceder a imagen a pesar que este publica*
+*Esto se hace para que Kubernetes pueda acceder a la imagen a pesar que este publica y se debe completar con las credeciales correspondientes.*
 ```bash
 kubectl create secret -n flask docker-registry flask-image \
     --docker-server=https://index.docker.io/v1/ \
