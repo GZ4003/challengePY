@@ -3,7 +3,7 @@ FROM python:3.9 as builder
 WORKDIR /app
 
 # Copiamos requirements.txt al contenedor
-COPY requirements.txt .
+COPY /app/requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools wheel
 
