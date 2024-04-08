@@ -1,15 +1,15 @@
 name: Flask
 on:
   push:
-   paths:
-     - 'app/**'
+    paths:
+      - 'app/**'
   pull_request:
     paths:
       - 'app/**'
 
 jobs:
   build-and-push:
-    runs-on: python:3.9
+    runs-on: ubuntu-latest
     steps:
     - name: Check out the code
       uses: actions/checkout@v2
@@ -26,7 +26,6 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v2
       with:
-        context: ${{ github.workspace }}/app
-        file: ${{ github.workspace }}/app
+        context: .
         push: true
-        tags: gz4003/flaskapp_image:v1       
+        tags: gz4003/flaskapp_image:v1
