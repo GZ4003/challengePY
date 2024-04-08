@@ -6,10 +6,6 @@ metadata:
     {{- include "flaskapp-helm-chart.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
-  ports:
-    - port: {{ .Values.service.port }}
-      targetPort: 6969
-      protocol: TCP
-      name: http
+   externalName: 
   selector:
     {{- include "flaskapp-helm-chart.selectorLabels" . | nindent 4 }}

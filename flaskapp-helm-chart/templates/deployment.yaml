@@ -37,9 +37,6 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-          volumeMounts:
-          - name: flask-volume
-            mountPath: /usr/src/app/
           livenessProbe:
             httpGet:
               path: /
@@ -62,7 +59,4 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      volumes:
-      - name: flask-volume
-        persistentVolumeClaim:
-          claimName: {{ include "flaskapp-helm-chart.fullname" . }}-pvc
+    

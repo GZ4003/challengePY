@@ -80,15 +80,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-PersistentVolume:
-  enabled: true
-  size: 10Gi
-  accessMode: "ReadWriteOnce"
-  storageClass: ""
-
-PersistentVolumeClaim:
-  enabled: true
-  size: 10Gi
-  accessMode: "ReadWriteOnce"
-  storageClass: ""
