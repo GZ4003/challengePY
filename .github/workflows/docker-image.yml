@@ -27,8 +27,8 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        file: ./app/Dockerfile
+        file: ../app/Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/flaskapp_image:v1
         build-args: | 
-          REQUIREMENTS_FILE=./app/requirements.txt
+          REQUIREMENTS_FILE=../app/requirements.txt
