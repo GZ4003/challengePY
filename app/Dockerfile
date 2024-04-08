@@ -1,6 +1,5 @@
 # Etapa 1: La contrucción de la imagen
 FROM python:3.9 as builder
-
 WORKDIR /app
 
 # Copiamos requirements.txt al contenedor
