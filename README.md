@@ -12,7 +12,9 @@ docker build -t flaskapp .
 
 3-Ejecutar el contenedor Docker localmente:
 
-*docker run -p 6969:6969 flaskapp*
+```bash
+docker run -p 6969:6969 flaskapp
+```
 
 4-Ahora vemos si funciona la imagen yendo al puerto que colocamos antes 
 
@@ -25,34 +27,40 @@ docker build -t flaskapp .
 *Edita el archivo values.yaml según tus preferencias y configuraciones específicas del clúster de Kubernetes.*
 
 6-Crear namespace de trabajo
-
-*kubectl create namespace flask 6*
-
+```bash
+kubectl create namespace flask 6
+```
 7-Desplegar la aplicación en Kubernetes:
 
-*helm install flaskapp-deploy . -n flask -f values.yaml  --debug*
-
+```bash
+helm install flaskapp-deploy . -n flask -f values.yaml  --debug
+```
 8-Verificar el estado del despliegue:
 
-*kubectl get pods --namespace flask*
-
+```bash
+kubectl get pods --namespace flask
+```
 
 *Esto mostrará el estado de los pods en tu clúster de Kubernetes. Espera hasta que el pod correspondiente al despliegue esté en estado Running.*
 
 9-Para actualizar
 
+```bash
 helm upgrade flaskapp-deploy . -n flask -f values.yaml  --debug
-
+```
 10-Secreto para docker
 
+```bash
 kubectl create secret -n flask docker-registry flask \
     --docker-server=https://index.docker.io/v1/ \
     --docker-username=prasadhole \
     --docker-password=Prasad@2002
-
+```
 11-Acceder a la aplicación en Kubernetes:
 
+```bash
 kubectl get svc
+```
 
 *Utiliza la dirección IP y el puerto para acceder a la aplicación en el navegador web.*
 
